@@ -45,6 +45,7 @@ text_actual_value = wx.TextCtrl( panel, value = "value", pos=(140, 10), size=(12
    style = wx.TE_READONLY | wx.TE_CENTER ) 
 # ---------
 # proportional coefficient user interface
+
 ypos = 40
 text_p_description = wx.TextCtrl( panel, value = "p coefficient = ", pos=(10, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
