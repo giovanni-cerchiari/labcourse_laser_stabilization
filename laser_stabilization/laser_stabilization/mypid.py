@@ -42,12 +42,14 @@ panel = wx.Panel(frame, wx.ID_ANY)
 #------------------------------------------------------
 # descriptive textbox
 text_actual_value = wx.TextCtrl( panel, value = "value", pos=(140, 10), size=(120, 25),
+   style = wx.TE_READONLY | wx.TE_CENTER )
+text_actual_value = wx.TextCtrl( panel, value = "new value", pos=(300, 10), size=(100, 25),
    style = wx.TE_READONLY | wx.TE_CENTER ) 
 # ---------
 # proportional coefficient user interface
 
 ypos = 40
-text_p_description = wx.TextCtrl( panel, value = "p coefficient = ", pos=(10, ypos), size=(120, 40),
+text_p_description = wx.TextCtrl( panel, value = "p coefficient", pos=(10, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
 text_p_actual_value = wx.TextCtrl( panel, value = "", pos=(140, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
@@ -69,7 +71,7 @@ button_p_update.Bind(wx.EVT_BUTTON, onButton_p_update)
 #-----------
 # integral coefficient user interface
 ypos = 90
-text_i_description = wx.TextCtrl( panel, value = "i coefficient = ", pos=(10, ypos), size=(120, 40),
+text_i_description = wx.TextCtrl( panel, value = "i coefficient", pos=(10, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
 text_i_actual_value = wx.TextCtrl( panel, value = "", pos=(140, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
@@ -91,7 +93,7 @@ button_i_update.Bind(wx.EVT_BUTTON, onButton_i_update)
 #-----------
 # set-point user interface
 ypos = 140
-text_s_description = wx.TextCtrl( panel, value = "set point = ", pos=(10, ypos), size=(120, 40),
+text_s_description = wx.TextCtrl( panel, value = "set point", pos=(10, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
 text_s_actual_value = wx.TextCtrl( panel, value = "", pos=(140, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
@@ -113,7 +115,7 @@ button_s_update.Bind(wx.EVT_BUTTON, onButton_s_update)
 #-----------
 # read in1 user interface
 ypos = 400
-text_get_in1_description = wx.TextCtrl( panel, value = "voltage in1 = ", pos=(10, ypos), size=(120, 40),
+text_get_in1_description = wx.TextCtrl( panel, value = "voltage in1", pos=(10, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
 text_in1_actual_value = wx.TextCtrl( panel, value = "", pos=(140, ypos), size=(120, 40),
    style = wx.TE_READONLY | wx.TE_LEFT ) 
@@ -123,7 +125,7 @@ flg_button_get_in1 = False
 #----------------------------------
 # zero the integral value of the PID -> user interface
 ypos = 350 
-button_zero_ival = wx.Button(panel, wx.ID_ANY, 'Get value', pos=(500, ypos), size=(200, 40))
+button_zero_ival = wx.Button(panel, wx.ID_ANY, 'Zero integral value', pos=(500, ypos), size=(200, 40))
 # variable that is monitored in the main loop
 flg_button_zero_ival = False
 #---------------------------------
