@@ -1,7 +1,8 @@
 # Copyright: Giovanni Cerchiari
 # date: 04/2021
 
-# This application is designed for the teaching course "FPA"
+# This application is designed for the teaching the 
+# module "laser stabilization" of the course "FPA"
 # at the University of Innsbruck.
 
 # This is a free software: you can redistribute it and/or modify
@@ -104,6 +105,8 @@ def pid_idle():
     if mypid.flg_button_zero_ival==True:
       mypid.r.pid0.ival = 0
       mypid.flg_button_zero_ival = False
+    if mypid.flg_button_na==True:
+      mypid.start_network_analyzer()
     #------------------------------------------------
     # time
     t = time.time()

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>fb80eefe-e2cd-40db-94d5-b9ed8208d949</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>pid_main.py</StartupFile>
+    <StartupFile>my_na.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,9 @@
     <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="my_na.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="mypid.py" />
     <Compile Include="pid_main.py" />
   </ItemGroup>

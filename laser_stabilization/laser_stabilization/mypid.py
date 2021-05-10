@@ -2,7 +2,8 @@
 # Copyright: Giovanni Cerchiari
 # date: 04/2021
 
-# This application is designed for the teaching course "FPA"
+# This application is designed for the teaching the 
+# module "laser stabilization" of the course "FPA"
 # at the University of Innsbruck.
 
 # This is a free software: you can redistribute it and/or modify
@@ -25,11 +26,13 @@ import numpy as np
 # Communication with the Redpitaya hardware
 # -----------------------------------------------------
 # Redpitaya address on network. Change this according to your network!!!
-HOSTNAME = "169.254.146.185"
+HOSTNAME = "169.254.107.161"
 # open Redpitaya
 #r = RedPitaya(hostname=HOSTNAME)
 p = Pyrpl(hostname=HOSTNAME)
 r = p.rp
+na = p.networkanalyzer
+na.iq_name = 'iq1'
 # -----------------------------------------------------
 # -----------------------------------------------------
 # Graphical User Interface (GUI)
@@ -128,7 +131,6 @@ ypos = 350
 button_zero_ival = wx.Button(panel, wx.ID_ANY, 'Zero integral value', pos=(500, ypos), size=(200, 40))
 # variable that is monitored in the main loop
 flg_button_zero_ival = False
-#---------------------------------
 # callback
 def onButton_zero_ival(event):
     global flg_button_zero_ival
@@ -137,6 +139,23 @@ def onButton_zero_ival(event):
 
 # binding call back to the visual object
 button_zero_ival.Bind(wx.EVT_BUTTON, onButton_zero_ival)
+
+#---------------------------------
+# zero the integral value of the PID -> user interface
+ypos = 350 
+button_na = wx.Button(panel, wx.ID_ANY, 'Start na', pos=(200, ypos), size=(200, 40))
+# variable that is monitored in the main loop
+flg_button_na = False
+# callback
+def onButton_na(event):
+    global flg_button_na
+    if flg_button_na == False:
+        flg_button_na = True
+
+# binding call back to the visual object
+button_na.Bind(wx.EVT_BUTTON, onButton_na)
+
+#---------------------------------
 
 def update_p():
   ''' Update the p coefficient of the PID.
@@ -203,3 +222,24 @@ def update_s():
     print("Invalid number input")
   # reset the condition
   flg_button_s_update = False
+
+
+def start_network_analyzer():
+  ''' Update the set point of the PID .
+  To update, write in the textbox and click on the button.'''
+  global na
+
+    # setup network analyzer with the right parameters
+  #na.setup(start=1e3,stop=62.5e6,points=1001,rbw=1000, avg=1,
+  #amplitude=0.2,input='iq1',output_direct='off', acbandwidth=0)
+
+  #take transfer functions. first: iq1 -> iq1, second iq1->out1->(your cable)->adc1
+  #iq1 = na.curve()
+  #na.setup(input='in1', output_direct='out1')
+  in1 = na.curve()
+
+  # get x-axis for plotting
+  f = na.frequencies
+
+  flg_button_na = False
+  return
